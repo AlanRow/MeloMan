@@ -13,6 +13,7 @@ namespace FileScaner
         const string SUBFORMAT = "WAVE";
         const string SUBSUBFORMAT = "fmt ";
         const string DATA = "data";
+        const string LIST = "LIST"; 
         const int SUBCHUNK = 16;
         const int NOTCOMPRESSING = 1;
 
@@ -96,10 +97,21 @@ namespace FileScaner
             var byteInSecond = byteInSample * Sampling;
             ReadAndCheck(bytes, byteInSecond, 28);
 
-            ReadAndCheck(bytes, DATA, 36, 4);
+            var dataIdx = 36;
+            try
+            {
+            	ReadAndCheck(bytes, DATA, 36, 4);
+            }
+            catch (FormatException)
+            {
+            	ReadAndCheck(bytes, LIST, 36, 4);
+            	var addDataLen = BitConverter.ToInt32(bytes, 40);
+            	dataIdx = dataIdx + 8 + addDataLen;
+            	ReadAndCheck(bytes, DATA, dataIdx, 4);
+            }
 
-            var dataLen = (int)ReadNumberBE(bytes, 40, 4);
-            var dataStart = 44;
+            var dataLen = (int)ReadNumberBE(bytes, dataIdx + 4, 4);
+            var dataStart = dataIdx + 8;
 
             sound = new int[Channels, dataLen / (byteInSample)];
 
