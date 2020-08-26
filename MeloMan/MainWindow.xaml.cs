@@ -5,6 +5,7 @@
  * Date: 25.08.2020
  */
 using System;
+using System.Linq;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
@@ -31,11 +32,13 @@ namespace MeloMan
 	{
 		//private Button selected = null;
 		private Grid currentMenu;
+		private AppController app;
 		
 		public MainWindow()
 		{
 			InitializeComponent();
 			SwitchMenuPanel(Menu.MainMenu);
+			app = new AppController();
 		}
 		
 		private void ExitClick(object sender, RoutedEventArgs e)
@@ -82,6 +85,25 @@ namespace MeloMan
 			var dialog = new OpenFileDialog();
 			if (dialog.ShowDialog() == true)
 			{
+				var path = dialog.FileName;
+				var name = path.Split('\\').Last();
+				var ext = name.Split('.').Last().ToLower();
+				
+				if (ext == "wav")
+				{
+					try 
+					{
+						app.LoadFileSignal(path);
+					}
+					catch (Exception ex)
+					{
+						MessageBox.Show(ex.Message, "File handling error");
+					}
+				}
+				else
+				{
+					MessageBox.Show("Only WAV files is supported!", "Invalid file extension");
+				}
 				
 			}
 		}

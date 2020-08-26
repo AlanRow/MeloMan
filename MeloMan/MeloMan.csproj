@@ -64,15 +64,27 @@
       <SubType>Code</SubType>
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AppController.cs" />
+    <Compile Include="FileScaner\DigitalSignal.cs" />
+    <Compile Include="FileScaner\FileScanerAPI.cs" />
+    <Compile Include="FileScaner\IFile.cs" />
+    <Compile Include="FileScaner\InvalidChannelNumberException.cs" />
+    <Compile Include="FileScaner\Sound.cs" />
+    <Compile Include="FileScaner\WAWFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\WPFAssemblyInfo.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Signals\ISignal.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FileScaner" />
+    <Folder Include="Signals" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
