@@ -16,6 +16,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using Microsoft.Win32;
+using System.Windows.Shapes;
 
 namespace MeloMan
 {	
@@ -30,6 +31,8 @@ namespace MeloMan
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		static string DEBUG_LOG = "C:\\Users\\AlanRow\\Projects\\MeloMan\\Logging\\";
+		
 		//private Button selected = null;
 		private Grid currentMenu;
 		private AppController app;
@@ -62,6 +65,8 @@ namespace MeloMan
 		private void FileAnalyzingClick(object sender, RoutedEventArgs e)
 		{
 			SwitchMenuPanel(Menu.FileAnalyzingMenu);
+			var panel = (Grid)FindName("WaveFormPanel");
+			panel.Visibility = Visibility.Visible;
 		}
 		
 		private void CustomSignalClick(object sender, RoutedEventArgs e)
@@ -94,9 +99,12 @@ namespace MeloMan
 					try 
 					{
 						app.LoadFileSignal(path);
+						DrawWaveform(app.fileSignal);
 					}
 					catch (Exception ex)
 					{
+						File.WriteAllText(DEBUG_LOG + "error_log.txt", String.Format("{0}: {1}", DateTime.Now.ToString(), ex.Message));
+						File.WriteAllText(DEBUG_LOG + "error_log.txt", ex.StackTrace);
 						MessageBox.Show(ex.Message, "File handling error");
 					}
 				}
@@ -106,6 +114,17 @@ namespace MeloMan
 				}
 				
 			}
+		}
+		
+		private void DrawWaveform(ISignal signal) 
+		{	
+			var waveform = (System.Windows.Shapes.Path)FindName("WaveForm");
+			app.RenderAudioWave(waveform);
+			
+			waveform.SizeChanged += (ev, sender) => {
+				app.RenderAudioWave(waveform);
+			};
+			//app.LoadFileSignal("waveform");
 		}
 		
 		private void TransformSettingsClick(object sender, RoutedEventArgs e)

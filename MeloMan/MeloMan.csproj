@@ -45,6 +45,7 @@
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -78,12 +79,16 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Signals\ISignal.cs" />
+    <Compile Include="Visualizer\WaveImage.cs" />
+    <Compile Include="Visualizer\WaveImageLoader.cs" />
+    <Compile Include="Visualizer\WaveImageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FileScaner" />
+    <Folder Include="Visualizer" />
     <Folder Include="Signals" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

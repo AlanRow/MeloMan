@@ -104,5 +104,23 @@
 				Style="{StaticResource menuButton}"
 				Click="MainMenuClick">Main menu</Button>
 		</Grid>
+	
+		<Grid Grid.Column="1">
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid x:Name="WaveFormPanel" Background="White" Margin="10" Visibility="Collapsed">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto" />
+					<RowDefinition />
+				</Grid.RowDefinitions>
+				<TextBlock Grid.Row="0" Margin="15" FontSize="20" HorizontalAlignment="Center">
+					Audio Waveform
+				</TextBlock>
+				<Path Grid.Row="1" Stroke="Blue" x:Name="WaveForm" HorizontalAlignment="Stretch">
+				</Path>
+			</Grid>
+		</Grid>
 	</Grid>
 </Window>
