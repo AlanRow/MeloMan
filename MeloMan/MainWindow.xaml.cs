@@ -20,7 +20,7 @@ using System.Windows.Shapes;
 
 namespace MeloMan
 {	
-	enum Menu
+	enum MenuID
 	{
 		MainMenu,
 		FileAnalyzingMenu		
@@ -40,7 +40,7 @@ namespace MeloMan
 		public MainWindow()
 		{
 			InitializeComponent();
-			SwitchMenuPanel(Menu.MainMenu);
+			SwitchMenuPanel(MenuID.MainMenu);
 			app = new AppController();
 		}
 		
@@ -49,7 +49,7 @@ namespace MeloMan
 			Close();
 		}
 		
-		private void SwitchMenuPanel(Menu newMenuName)
+		private void SwitchMenuPanel(MenuID newMenuName)
 		{
 			var newMenu = (Grid)FindName(newMenuName.ToString());
 			if (newMenu == null)
@@ -60,11 +60,10 @@ namespace MeloMan
 			currentMenu.Visibility = Visibility.Visible;
 		}
 		
-		
 		// Main menu functions
 		private void FileAnalyzingClick(object sender, RoutedEventArgs e)
 		{
-			SwitchMenuPanel(Menu.FileAnalyzingMenu);
+			SwitchMenuPanel(MenuID.FileAnalyzingMenu);
 			var panel = (Grid)FindName("WaveFormPanel");
 			panel.Visibility = Visibility.Visible;
 		}
@@ -124,7 +123,6 @@ namespace MeloMan
 			waveform.SizeChanged += (ev, sender) => {
 				app.RenderAudioWave(waveform);
 			};
-			//app.LoadFileSignal("waveform");
 		}
 		
 		private void TransformSettingsClick(object sender, RoutedEventArgs e)
@@ -141,7 +139,7 @@ namespace MeloMan
 		
 		private void MainMenuClick(object sender, RoutedEventArgs e)
 		{
-			SwitchMenuPanel(Menu.MainMenu);
+			SwitchMenuPanel(MenuID.MainMenu);
 		}
 	}
 }

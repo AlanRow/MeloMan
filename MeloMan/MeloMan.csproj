@@ -46,6 +46,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -79,6 +80,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Signals\ISignal.cs" />
+    <Compile Include="SpectrumAnalyzer\Analyzer.cs" />
+    <Compile Include="SpectrumAnalyzer\FFTTransformer.cs" />
+    <Compile Include="SpectrumAnalyzer\FreqPoint.cs" />
+    <Compile Include="SpectrumAnalyzer\Spectrum.cs" />
+    <Compile Include="SpectrumAnalyzer\SpectrumLine.cs" />
     <Compile Include="Visualizer\WaveImage.cs" />
     <Compile Include="Visualizer\WaveImageLoader.cs" />
     <Compile Include="Visualizer\WaveImageRenderer.cs" />
@@ -88,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FileScaner" />
+    <Folder Include="SpectrumAnalyzer" />
     <Folder Include="Visualizer" />
     <Folder Include="Signals" />
   </ItemGroup>
