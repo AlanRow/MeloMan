@@ -154,9 +154,21 @@
 						<RowDefinition Height="Auto" />
 						<RowDefinition />
 					</Grid.RowDefinitions>
-					<TextBlock Grid.Row="0" Margin="15" FontSize="20" HorizontalAlignment="Center">
+					<TextBlock 
+						Grid.Row="0" 
+						Margin="15" 
+						FontSize="20" 
+						HorizontalAlignment="Center">
 						Spectrogram
 					</TextBlock>
+					<Canvas
+						Grid.Row="1"
+						Margin="15"
+						x:Name="SpectrogramContainer"
+						HorizontalAlignment="Stretch">
+						<Image 
+						    x:Name="SpectrogramImage"/>
+					</Canvas>
 				</Grid>
 			</Grid>
 		</Grid>

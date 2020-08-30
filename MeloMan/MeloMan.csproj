@@ -85,6 +85,7 @@
     <Compile Include="SpectrumAnalyzer\FreqPoint.cs" />
     <Compile Include="SpectrumAnalyzer\Spectrum.cs" />
     <Compile Include="SpectrumAnalyzer\SpectrumLine.cs" />
+    <Compile Include="Visualizer\SpectrogramRenderer.cs" />
     <Compile Include="Visualizer\WaveImage.cs" />
     <Compile Include="Visualizer\WaveImageLoader.cs" />
     <Compile Include="Visualizer\WaveImageRenderer.cs" />

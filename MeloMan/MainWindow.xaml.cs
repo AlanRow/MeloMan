@@ -98,7 +98,7 @@ namespace MeloMan
 					try 
 					{
 						app.LoadFileSignal(path);
-						DrawWaveform(app.fileSignal);
+						DrawWaveform();
 					}
 					catch (Exception ex)
 					{
@@ -115,7 +115,7 @@ namespace MeloMan
 			}
 		}
 		
-		private void DrawWaveform(ISignal signal) 
+		private void DrawWaveform() 
 		{	
 			var waveform = (System.Windows.Shapes.Path)FindName("WaveForm");
 			app.RenderAudioWave(waveform);
@@ -135,6 +135,9 @@ namespace MeloMan
 		
 		private void TransformClick(object sender, RoutedEventArgs e)
 		{
+			var img = (Image)FindName("SpectrogramImage");
+			var cont = (Canvas)FindName("SpectrogramContainer");
+			app.RenderSpectrogram(img, (int)cont.ActualWidth, (int)cont.ActualHeight);
 		}
 		
 		private void MainMenuClick(object sender, RoutedEventArgs e)

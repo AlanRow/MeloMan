@@ -7,9 +7,13 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Numerics;
 using System.Linq;
 using System.Windows.Shapes;
+using System.Windows.Controls;
+
 using FileScaner;
+using MeloMan.SpectrumAnalyzer;
 
 namespace MeloMan
 {
@@ -18,16 +22,35 @@ namespace MeloMan
 	/// </summary>
 	public class AppController
 	{
-		public ISignal fileSignal;
+		private ISignal fileSignal;
+		private Spectrum spectrum;
+		private Analyzer analyzer;
 		
 		public AppController()
 		{
-			fileSignal = null;
+			analyzer = new Analyzer();
 		}
 		
 		public void LoadFileSignal(string path) 
 		{
 			fileSignal = FileScanerAPI.ScanWAV(path);
+		}
+		
+		public void Transform()
+		{
+			if (fileSignal == null)
+				throw new FormatException("Audio file hasn't loaded!");
+			
+			spectrum = analyzer.GetSpectrum(fileSignal);
+		}
+		
+		public void RenderSpectrogram(Image img, int width, int height)
+		{
+			if (spectrum == null)
+				throw new FormatException("Spectrum hasn't transformed!");
+				
+			var renderer = new Visualizer.SpectrogramRenderer(spectrum);
+			renderer.DrawSpectrogram(img, width, height);
 		}
 		
 		public void RenderAudioWave(Path waveform)
@@ -48,3 +71,130 @@ namespace MeloMan
 		}
 	}
 }
+
+			/*
+			var test = new Spectrum(
+				new SpectrumLine[] {
+				new SpectrumLine(
+					new FreqPoint[] {
+						new FreqPoint(Complex.Zero, 1),
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1),  
+						new FreqPoint(Complex.One, 2),   
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2)
+					}
+				, 0),
+				new SpectrumLine(
+					new FreqPoint[] {  
+						new FreqPoint(Complex.One, 2),   
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),
+						new FreqPoint(Complex.Zero, 1),
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1)
+					}
+				, 0),
+				new SpectrumLine(
+					new FreqPoint[] {
+						new FreqPoint(Complex.Zero, 1),
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1),  
+						new FreqPoint(Complex.One, 2),   
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2)
+					}
+				, 0),
+				new SpectrumLine(
+					new FreqPoint[] {  
+						new FreqPoint(Complex.One, 2),   
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),
+						new FreqPoint(Complex.Zero, 1),
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1)
+					}
+				, 0),
+				new SpectrumLine(
+					new FreqPoint[] {
+						new FreqPoint(Complex.Zero, 1),
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1),  
+						new FreqPoint(Complex.One, 2),   
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2)
+					}
+				, 0),
+				new SpectrumLine(
+					new FreqPoint[] {  
+						new FreqPoint(Complex.One, 2),   
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),
+						new FreqPoint(Complex.Zero, 1),
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1)
+					}
+				, 0),
+				new SpectrumLine(
+					new FreqPoint[] {
+						new FreqPoint(Complex.Zero, 1),
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1),  
+						new FreqPoint(Complex.One, 2),   
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2)
+					}
+				, 0),
+				new SpectrumLine(
+					new FreqPoint[] {  
+						new FreqPoint(Complex.One, 2),   
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),
+						new FreqPoint(Complex.Zero, 1),
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1)
+					}
+				, 0),
+				new SpectrumLine(
+					new FreqPoint[] {
+						new FreqPoint(Complex.Zero, 1),
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1),  
+						new FreqPoint(Complex.One, 2),   
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2)
+					}
+				, 0),
+				new SpectrumLine(
+					new FreqPoint[] {  
+						new FreqPoint(Complex.One, 2),   
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),  
+						new FreqPoint(Complex.One, 2),
+						new FreqPoint(Complex.Zero, 1),
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1), 
+						new FreqPoint(Complex.Zero, 1)
+					}
+				, 0)
+				}
+			);
+			 */
