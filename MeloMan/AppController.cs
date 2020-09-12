@@ -7,13 +7,13 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
-using System.Numerics;
 using System.Linq;
 using System.Windows.Shapes;
 using System.Windows.Controls;
 
 using FileScaner;
 using MeloMan.SpectrumAnalyzer;
+using MeloMan.Visualizer;
 
 namespace MeloMan
 {
@@ -23,12 +23,16 @@ namespace MeloMan
 	public class AppController
 	{
 		private ISignal fileSignal;
+		
 		private Spectrum spectrum;
 		private Analyzer analyzer;
+
+		public SpectrogramRenderer SpecRenderer;
 		
 		public AppController()
 		{
 			analyzer = new Analyzer();
+			SpecRenderer = new SpectrogramRenderer();
 		}
 		
 		public void LoadFileSignal(string path) 
@@ -36,7 +40,7 @@ namespace MeloMan
 			fileSignal = FileScanerAPI.ScanWAV(path);
 		}
 		
-		public void Transform()
+		public void TransformFile()
 		{
 			if (fileSignal == null)
 				throw new FormatException("Audio file hasn't loaded!");
@@ -48,9 +52,10 @@ namespace MeloMan
 		{
 			if (spectrum == null)
 				throw new FormatException("Spectrum hasn't transformed!");
-				
-			var renderer = new Visualizer.SpectrogramRenderer(spectrum);
-			renderer.DrawSpectrogram(img, width, height);
+
+			//var renderer = new Visualizer.SpectrogramRenderer(spectrum);
+			SpecRenderer.Spectrum = spectrum;
+			SpecRenderer.DrawSpectrogram(img, width, height);
 		}
 		
 		public void RenderAudioWave(Path waveform)

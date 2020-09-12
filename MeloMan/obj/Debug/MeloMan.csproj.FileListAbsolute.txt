@@ -1,0 +1,14 @@
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\bin\Debug\MeloMan.exe
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\bin\Debug\MeloMan.pdb
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\obj\Debug\MeloMan.csprojAssemblyReference.cache
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\obj\Debug\MainWindow.g.cs
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\obj\Debug\App.g.cs
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\obj\Debug\MeloMan_MarkupCompile.cache
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\obj\Debug\MeloMan_MarkupCompile.lref
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\obj\Debug\MainWindow.baml
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\obj\Debug\MeloMan.g.resources
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\obj\Debug\MeloMan.csproj.CoreCompileInputs.cache
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\obj\Debug\MeloMan.exe
+C:\Users\HP\Source\Repos\AlanRow\MeloMan\MeloMan\obj\Debug\MeloMan.pdb
+C:\Users\HP\source\repos\AlanRow\MeloMan\MeloMan\obj\Debug\ViewSettingsForm.g.cs
+C:\Users\HP\source\repos\AlanRow\MeloMan\MeloMan\obj\Debug\ViewSettingsForm.baml

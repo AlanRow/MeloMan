@@ -18,7 +18,11 @@ namespace MeloMan.SpectrumAnalyzer
 	{
 		public Complex[] Transform(double[] signal)
         {
-			return FFTByTime(signal, signal.Length, 0);
+            var size = 1;
+            while (size <= signal.Length)
+                size *= 2;
+            size /= 2;
+			return FFTByTime(signal, size, 0);
         }
 
         // выделить в отдельный класс

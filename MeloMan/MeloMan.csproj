@@ -85,6 +85,9 @@
     <Compile Include="SpectrumAnalyzer\FreqPoint.cs" />
     <Compile Include="SpectrumAnalyzer\Spectrum.cs" />
     <Compile Include="SpectrumAnalyzer\SpectrumLine.cs" />
+    <Compile Include="ViewSettingsForm.xaml.cs">
+      <DependentUpon>ViewSettingsForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Visualizer\SpectrogramRenderer.cs" />
     <Compile Include="Visualizer\WaveImage.cs" />
     <Compile Include="Visualizer\WaveImageLoader.cs" />
@@ -92,12 +95,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindow.xaml" />
+    <Page Include="ViewSettingsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FileScaner" />
-    <Folder Include="SpectrumAnalyzer" />
-    <Folder Include="Visualizer" />
-    <Folder Include="Signals" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

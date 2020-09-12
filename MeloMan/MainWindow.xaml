@@ -148,7 +148,7 @@
 				<Grid 
 					Grid.Row="1"
 					x:Name="SpectrogramPanel" 
-					Background="White" 
+					Background="Blue" 
 					Margin="10">
 					<Grid.RowDefinitions>
 						<RowDefinition Height="Auto" />

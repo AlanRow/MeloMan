@@ -131,10 +131,13 @@ namespace MeloMan
 		
 		private void ViewSettingsClick(object sender, RoutedEventArgs e)
 		{
+			var form = new ViewSettingsForm(app.SpecRenderer);
+			form.ShowDialog();
 		}
 		
 		private void TransformClick(object sender, RoutedEventArgs e)
 		{
+			app.TransformFile();
 			var img = (Image)FindName("SpectrogramImage");
 			var cont = (Canvas)FindName("SpectrogramContainer");
 			app.RenderSpectrogram(img, (int)cont.ActualWidth, (int)cont.ActualHeight);

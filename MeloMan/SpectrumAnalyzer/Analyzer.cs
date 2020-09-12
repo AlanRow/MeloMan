@@ -12,7 +12,7 @@ using System.Linq;
 namespace MeloMan.SpectrumAnalyzer
 {
 	/// <summary>
-	/// Description of Analyzer.
+	/// Main class for transforming signal actions
 	/// </summary>
 	public class Analyzer
 	{
